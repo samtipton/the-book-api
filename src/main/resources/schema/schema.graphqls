@@ -1,0 +1,104 @@
+type Query {
+    scriptureByIds(input: ScriptureIdInput): ScripturePayload
+    scriptureByBookChapterVerse(input: ScriptureIndexInput): ScripturePayload
+}
+
+input ScriptureIdInput {
+    startId: Int!
+    endId: Int
+    length: Int
+}
+
+input ScriptureIndexInput {
+    startIndex: ScriptureIndex!
+    endIndex: ScriptureIndex
+    length: Int
+}
+
+input ScriptureIndex {
+    book: Book
+    chapter: Int
+    verse: Int!
+}
+
+type ScripturePayload {
+    count: Int!
+    scripture: [Scripture!]!
+}
+
+type Scripture {
+    id: Int!
+    book: Int!
+    chapter: Int!
+    verse: Int!
+    text: String!
+}
+
+enum Book {
+    Genesis
+    Exodus
+    Leviticus
+    Numbers
+    Deuteronomy
+    Joshua
+    Judges
+    Ruth
+    FirstSamuel
+    SecondSamuel
+    FirstKings
+    SecondKings
+    FirstChronicles
+    SecondChronicles
+    Ezra
+    Nehemiah
+    Esther
+    Job
+    Psalms
+    Proverbs
+    Ecclesiastes
+    SongOfSolomon
+    Isaiah
+    Jeremiah
+    Lamentations
+    Ezekiel
+    Daniel
+    Hosea
+    Joel
+    Amos
+    Obadiah
+    Jonah
+    Micah
+    Nahum
+    Habakkuk
+    Zephaniah
+    Haggai
+    Zechariah
+    Malachi
+    Matthew
+    Mark
+    Luke
+    John
+    Acts
+    Romans
+    FirstCorinthians
+    SecondCorinthians
+    Galatians
+    Ephesians
+    Philippians
+    Colossians
+    FirstThessalonians
+    SecondThessalonians
+    FirstTimothy
+    SecondTimothy
+    Titus
+    Philemon
+    Hebrews
+    James
+    FirstPeter
+    SecondPeter
+    FirstJohn
+    SecondJohn
+    ThirdJohn
+    Jude
+    Revelation
+}

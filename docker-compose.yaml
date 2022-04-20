@@ -1,0 +1,11 @@
+version: '3'
+services:
+  bible-mysql:
+    image: samtipton/bible-mysql
+    ports:
+      - "3306:3306"
+    # environment:
+  the-book-api:
+    image: samtipton/the-book-api
+    ports:
+      - "8000:8080"

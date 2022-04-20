@@ -1,8 +1,8 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.3'
+    id "org.jetbrains.kotlin.jvm" version "1.6.20"
+    id 'org.springframework.boot' version '2.6.6'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "org.jetbrains.kotlin.jvm" version "1.6.10"
     id 'application'
     id "com.netflix.dgs.codegen" version "5.1.16"
 }
@@ -29,6 +29,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.3'
 
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.20'
+    implementation 'org.jetbrains.kotlin:kotlin-script-runtime:1.6.20'
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:latest.release"))
     implementation "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter"
 
@@ -49,4 +51,8 @@ generateJava{
     schemaPaths = ["${projectDir}/src/main/resources/schema"] // List of directories containing schema files
     packageName = 'com.thebook.thebookapi' // The package name to use to generate sources
     generateClient = true // Enable generating the type safe query API
+}
+
+tasks.named("bootBuildImage") {
+    imageName = "samtipton/${project.name}"
 }
